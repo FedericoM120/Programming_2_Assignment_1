@@ -24,6 +24,7 @@ public class Main {
                 "using the following format:" + "\n" + "\t" + "\"firstName lastName PID grade\"." +
                 "\n" + "Press Enter when you are done.");
 
+
         //1. first name needs to inputted by the user
         //2. need to check if first name meets criteria
         //3. if first name meets criteria move on to last name input move to step 5
@@ -58,26 +59,34 @@ public class Main {
             }
         }
 
-        //asks user for panther ID
-        int pantherID = sc.nextInt();
+        //asks user for panther ID but if id isn't int then exception gets thrown
         boolean exitPantherIdLoop = true;
+        int pantherID = sc.nextInt();
         while (exitPantherIdLoop == true){
+            //int pantherID = sc.nextInt();
             String pantherIdString = String.valueOf(pantherID);
             if (String.valueOf(pantherID).length() == 7 && pantherIdString.charAt(0) != 0) {
                 exitPantherIdLoop = false;
                 break;
             } else {
                 System.out.println("Panther ID must be 7 digits long with no leading zeros");
-                pantherID = sc.nextInt();
             }
         }
 
         //asks user for student grade
         int score = sc.nextInt();
+        boolean exitScoreLoop = true;
+        while (exitScoreLoop == true) {
+            if (score >= 0 && score <= 100) {
+                exitScoreLoop = false;
+                break;
+            } else {
+                System.out.println("Grade must be a non-negative integer that doesn't exceed 100");
+                score = sc.nextInt();
+            }
+        }
+        //assigns score from exitScoreLoop to the grade object
         Grade grade = new Grade(score);
-
-
-
 
 
         //creates newStudent object with the user input as its parameters
@@ -85,14 +94,8 @@ public class Main {
         //adds the newStudent object to the arrayList comprimising of all the student(s)
         studentsClassA.add(newStudent);
 
-
-
-
-
-
-
+        //asks for user to enter a new student repeatedly until "DONE" is entered
         boolean exitLoop = true;
-
         while (exitLoop == true){
             System.out.println("Please enter the information of the next student using the same format." +
                     "\n" + "If there is no more students, please enter the keyword \"DONE\"" +
@@ -101,8 +104,70 @@ public class Main {
             if (name.equals("DONE")) {
                 exitLoop = false;
             }
-        }
-	
-    }
 
+            //second prompt for first name
+            firstName = sc.nextLine();
+            exitFirstNameLoop = true;
+            while (exitFirstNameLoop == true) {
+                if (Character.isUpperCase(firstName.charAt(0)) && firstName.matches("[a-zA-Z]+") &&
+                        !firstName.contains(" ")) {
+                    exitFirstNameLoop = false;
+                    break;
+                } else {
+                    System.out.println("first letter needs to be capitalized and name must contain only letters");
+                    firstName = sc.nextLine();
+                }
+            }
+
+            //second prompt user for last name
+            lastName = sc.nextLine();
+            exitLastNameLoop = true;
+            while (exitLastNameLoop == true) {
+                if (Character.isUpperCase(lastName.charAt(0)) && lastName.matches("[a-zA-Z]+") &&
+                        !lastName.contains(" ")) {
+                    exitLastNameLoop = false;
+                    break;
+                } else {
+                    System.out.println("first letter needs to be capitalized and name must contain only letters");
+                    lastName = sc.nextLine();
+                }
+            }
+
+            //****!! asks user for panther ID but if id isn't int then exception gets thrown !!!!****
+            exitPantherIdLoop = true;
+            pantherID = sc.nextInt();
+            while (exitPantherIdLoop == true){
+                //int pantherID = sc.nextInt();
+                String pantherIdString = String.valueOf(pantherID);
+                if (String.valueOf(pantherID).length() == 7 && pantherIdString.charAt(0) != 0) {
+                    exitPantherIdLoop = false;
+                    break;
+                } else {
+                    System.out.println("Panther ID must be 7 digits long with no leading zeros");
+                    //pantherID = sc.nextInt();
+                }
+            }
+
+            //asks user for student grade
+            score = sc.nextInt();
+            exitScoreLoop = true;
+            while (exitScoreLoop == true) {
+                if (score >= 0 && score <= 100) {
+                    exitScoreLoop = false;
+                    break;
+                } else {
+                    System.out.println("Grade must be a non-negative integer that doesn't exceed 100");
+                    score = sc.nextInt();
+                }
+            }
+            //assigns score from exitScoreLoop to the grade object
+            grade = new Grade(score);
+
+            //creates newStudent object with the user input as its parameters
+            newStudent = new Student(firstName, lastName, pantherID, grade);
+            //adds the newStudent object to the arrayList comprimising of all the student(s)
+            studentsClassA.add(newStudent);
+        }
+        System.out.println(studentsClassA);
+    }
 }
