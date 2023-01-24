@@ -65,11 +65,13 @@ public class Main {
         while (exitPantherIdLoop == true){
             //int pantherID = sc.nextInt();
             String pantherIdString = String.valueOf(pantherID);
-            if (String.valueOf(pantherID).length() == 7 && pantherIdString.charAt(0) != 0) {
+            if (String.valueOf(pantherID).length() == 7 && pantherIdString.charAt(0) != 0 &&
+            pantherID > 0) {
                 exitPantherIdLoop = false;
                 break;
             } else {
                 System.out.println("Panther ID must be 7 digits long with no leading zeros");
+                pantherID = sc.nextInt();
             }
         }
 
@@ -168,6 +170,6 @@ public class Main {
             //adds the newStudent object to the arrayList comprimising of all the student(s)
             studentsClassA.add(newStudent);
         }
-        System.out.println(studentsClassA);
+        classAGradeBook.printAllStudents();
     }
 }

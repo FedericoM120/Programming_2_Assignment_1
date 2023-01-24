@@ -14,8 +14,6 @@ public class Gradebook {
 		listOfStudents = new ArrayList<Student>();
 	}
 
-
-
 	public double calculateAvg() {
 	double sum = 0;
 	for(Student s: listOfStudents)
@@ -37,4 +35,7 @@ public class Gradebook {
 	for(Student s: listOfStudents)
 	    System.out.printf("%s\t%s\t%d\t%d\n", s.getFirstName(), s.getLastName(), s.getPid(), s.getGrade().getScore());
     }
+
+
+
 }

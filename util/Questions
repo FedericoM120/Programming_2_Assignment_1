@@ -1,5 +1,5 @@
 
 
-1. If user clicks enter, program throws exception - what can I do fix this?
+1. If user inputs empty input program throws exception
 
-2.
+2.line 73 repeats infinitely
