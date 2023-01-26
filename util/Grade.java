@@ -7,16 +7,7 @@ import java.util.*;
 public class Grade {
     private int score;
     private String letterGrade;
-    public int getScore() {
-        return score;
-    }
-    public String getLetterGrade() {
-        return letterGrade;
-    }
-
-    public Grade(int score) {
-        this.score = score;
-
+    public static String scoreToLetter(int score){
         if(score > 100)
             letterGrade = "Illegal";
         if(score >= 90)
@@ -37,15 +28,17 @@ public class Grade {
             letterGrade = "D";
         if(score >=0)
             letterGrade = "F";
+        return "f"; //delete later
     }
 
-    //if score >50 = f then assign to lettergrade in grade constructor
-
-    public void setScore(int score) {
+    public Grade(int score) {
         this.score = score;
+        this.letterGrade = scoreToLetter(score);
     }
-
-    public void setLetterGrade(String letterGrade) {
-        this.letterGrade = letterGrade;
+    public int getScore() {
+        return score;
+    }
+    public String getLetterGrade() {
+        return letterGrade;
     }
 }

@@ -5,8 +5,6 @@ package util;
 public class Student {
     private String firstName;
     private String lastName;
-    private int pid;
-    private Grade grade;
 
     public Student(String firstName, String lastName, int pid, Grade grade) {
         this.firstName = firstName;
@@ -15,6 +13,12 @@ public class Student {
         this.grade = grade;
     }
 
+    private int pid;
+
+    public void setGrade(Grade grade) {
+        this.grade = grade;
+    }
+    private Grade grade;
     public String getFirstName() {
         return firstName;
     }
@@ -27,5 +31,4 @@ public class Student {
     public Grade getGrade() {
         return grade;
     }
-
 }
