@@ -5,7 +5,8 @@ package util;
 import java.util.*;
 
 public class Gradebook {
-	public Gradebook(){
+	public Gradebook(){			// constructor for Gradebook which assigns the arraylsit listofStudents to new
+								// instances of Gradebook?
 		listOfStudents = new ArrayList<Student>();
 	}
 	private ArrayList<Student> listOfStudents;
@@ -17,6 +18,14 @@ public class Gradebook {
 		for(Student s: listOfStudents)
 			sum += s.getGrade().getScore();
 		return sum / listOfStudents.size();
+	}
+
+	public String averageLetter() {
+		int sum = 0;
+		for(Student s: listOfStudents)
+			sum += s.getGrade().getScore();
+		int average = sum / listOfStudents.size();
+		return Grade.scoreToLetter(average);	//should grade be rounded down?
 	}
 	public float calculateMedian() {
 		int i = 0, n = listOfStudents.size();
@@ -44,9 +53,39 @@ public class Gradebook {
 		return minScore;
 	}
 
-	//public String minLetter() {
+	public double maxScore() {
+		int maxScore = 0;
+		for (Student s: listOfStudents) {
+			if (maxScore < s.getGrade().getScore()){
+				maxScore = s.getGrade().getScore();
+			}
+		}
+		return maxScore;
+	}
 
-	//}
+	public String minLetter() {
+		int minScore = 100;
+		for (Student s: listOfStudents) {
+			int currentScore = s.getGrade().getScore();
+			if (minScore > s.getGrade().getScore()) {
+				minScore = s.getGrade().getScore();
+			}
+		}
+		return Grade.scoreToLetter(minScore);
+	}
 
+	public String maxLetter(){
+		int maxScore = 0;
+		for (Student s: listOfStudents) {
+			if (maxScore < s.getGrade().getScore()){
+				maxScore = s.getGrade().getScore();
+			}
+		}
+		return Grade.scoreToLetter(maxScore);
+	}
+
+	/*public String findLetterGrade() {
+
+	}*/
 
 }

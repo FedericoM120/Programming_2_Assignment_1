@@ -10,13 +10,17 @@ import java.util.regex.Pattern;
 public class Main {
 
     private static boolean checkFirstName(String given){
-        if (Character.isUpperCase(given.charAt(0)) && given.matches("[a-zA-Z]+")) {
+        if (Character.isUpperCase(given.charAt(0)) && given.matches("[a-zA-Z]+")
+                && given.length() > 0) {
             return true;
         }
         return false;
+
+        //if (given.matches("[a-zA-Z]+")) return true
     }
     private static boolean checkLastName(String given){
-        if (Character.isUpperCase(given.charAt(0)) && given.matches("[a-zA-Z]+")) {
+        if (Character.isUpperCase(given.charAt(0)) && given.matches("[a-zA-Z]+")
+                && given.length() > 0) {
             return true;
         }
         return false;
@@ -73,10 +77,8 @@ public class Main {
                 System.out.println("Grade must be a non-negative integer that doesn't exceed 100");
                 continue;
             }
-            Student student = new Student(tokens[0],
-                    tokens[1],
-                    Integer.parseInt(tokens[2]),
-                    new Grade(Integer.parseInt(tokens[3])));
+            Student student = new Student(tokens[0],tokens[1],Integer.parseInt(tokens[2]),
+                    new Grade(Integer.parseInt(tokens[3]))); //why is parseint needed here?
             gradebook.addStudent(student);
 
             System.out.println("Please enter the information of the next student using the same format." +
@@ -85,23 +87,24 @@ public class Main {
         }
         //command handling phase
         while(true){
+            System.out.println("Please enter a new command");
             String command = keyboard.nextLine();
             if(command.equals("quit"))
                 break;
             if(command.equals("min score")){
-
+                System.out.println(gradebook.minScore());
             }else if(command.equals("min letter")){
-
+                System.out.println(gradebook.minLetter());
             }else if(command.equals("max score")){
-
+                System.out.println(gradebook.maxScore());
             }else if(command.equals("max letter")){
-
+                System.out.println(gradebook.maxLetter());
             }else if(command.equals("average score")){
-
+                System.out.println(gradebook.calculateAvg());
             }else if(command.equals("average letter")){
-
+                System.out.println(gradebook.averageLetter());
             }else if(command.equals("median score")){
-
+                System.out.println(gradebook.calculateMedian());
             }else if(command.equals("median letter")){
 
             }else if(command.equals("tab score")){

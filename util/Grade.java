@@ -5,40 +5,49 @@ package util;
 import java.util.*;
 
 public class Grade {
-    private int score;
-    private String letterGrade;
-    public static String scoreToLetter(int score){
+    private int score;    //integer score
+    private String letterGrade;  //String letterGrade
+    public static String scoreToLetter(int score){   //converts score to Letter grade
         if(score > 100)
-            letterGrade = "Illegal";
-        if(score >= 90)
-            letterGrade = "A";
-        if(score >= 85)
-            letterGrade = "A-";
-        if(score >= 80)
-            letterGrade = "B+";
-        if(score >= 75)
-            letterGrade = "B";
-        if(score >= 70)
-            letterGrade = "B-";
-        if(score >= 65)
-            letterGrade = "C+";
-        if(score >= 60)
-            letterGrade = "C";
-        if(score >= 50)
-            letterGrade = "D";
-        if(score >=0)
-            letterGrade = "F";
-        return "f"; //delete later
+            System.out.println("Illegal");
+        if(score >= 90){
+            return "A";
+        }
+        if(score >= 85) {
+            return "A-";
+        }
+        if(score >= 80) {
+            return "B+";
+        }
+        if(score >= 75) {
+            return "B";
+        }
+        if(score >= 70) {
+            return "B-";
+        }
+        if(score >= 65) {
+            return "C+";
+        }
+        if(score >= 60) {
+            return "C";
+        }
+        if(score >= 50) {
+            return "D";
+        }
+            return "F";
     }
 
-    public Grade(int score) {
+    public Grade(int score) {  //Grade constructor which passes the score parameter to score field and assigns
+                                //letter grade a letter by using the scoreToLetter method
         this.score = score;
         this.letterGrade = scoreToLetter(score);
     }
-    public int getScore() {
+    public int getScore() {  //gets the score from the constructor
+
         return score;
     }
-    public String getLetterGrade() {
+    public String getLetterGrade() {  //gets the letter grade from the constructor
+
         return letterGrade;
     }
 }
