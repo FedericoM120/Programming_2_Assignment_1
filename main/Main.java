@@ -106,7 +106,7 @@ public class Main {
             }else if(command.equals("median score")){
                 System.out.println(gradebook.calculateMedian());
             }else if(command.equals("median letter")){
-
+                System.out.println(gradebook.getMedianLetter());
             }else if(command.equals("tab score")){
 
             }else if(command.equals("tab letter")){
@@ -114,9 +114,15 @@ public class Main {
             }else if(command.startsWith("change")){
 
             }else if(command.startsWith("name")){
-
+                System.out.println("enter panther ID");
+                int pantherID = 0;
+                pantherID = keyboard.nextInt();
+                System.out.println(gradebook.findName(pantherID));
             }else if(command.startsWith("letter")){
-
+                System.out.println("enter panther ID");
+                int pantherID = 0;
+                pantherID = keyboard.nextInt();
+                System.out.println(gradebook.findLetter(pantherID));
             }else{
                 //print an error message "Illegal command, try again"...
             }

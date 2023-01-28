@@ -1,5 +1,8 @@
 
 
-1. If user inputs empty input program throws exception
+name method returns enter a new command twice
 
-2.line 73 repeats infinitely
+- set grade needs to be immutable?
+
+
+- aesthetic vs non aesthetic !!!

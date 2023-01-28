@@ -25,7 +25,7 @@ public class Gradebook {
 		for(Student s: listOfStudents)
 			sum += s.getGrade().getScore();
 		int average = sum / listOfStudents.size();
-		return Grade.scoreToLetter(average);	//should grade be rounded down?
+		return Grade.scoreToLetter(average);
 	}
 	public float calculateMedian() {
 		int i = 0, n = listOfStudents.size();
@@ -37,6 +37,22 @@ public class Gradebook {
 			return (scores[n / 2] + scores[n / 2 - 1]) / 2.0f;
 		else
 			return scores[n / 2];
+	}
+
+	public float getMedianLetter() {
+		int i = 0, n = listOfStudents.size();
+		int[] scores = new int[n];
+		float medianLetter;
+		for(Student s: listOfStudents)
+			scores[i++] = s.getGrade().getScore();
+		Arrays.sort(scores);
+		if (n % 2 == 0) {
+			medianLetter = (scores[n / 2] + scores[n / 2 - 1]) / 2.0f;
+		}
+		else {
+			medianLetter =  scores[n / 2];
+		}
+		return medianLetter;
 	}
 	public void printAllStudents() {
 		for(Student s: listOfStudents)
@@ -83,9 +99,24 @@ public class Gradebook {
 		}
 		return Grade.scoreToLetter(maxScore);
 	}
+	public String findName(Integer studentID) {
+		String pidFound = "s";
+		for (Student s: listOfStudents) {
+			if (studentID.equals(s.getPid())) {
+				pidFound = s.getFirstName() + " " + s.getLastName();
+			}
+		}
+		return pidFound;
+	}
 
-	/*public String findLetterGrade() {
-
-	}*/
+	public String findLetter(Integer sID) {
+		String pidFound = "s";
+		for (Student s: listOfStudents) {
+			if (sID.equals(s.getPid())) {
+				pidFound = s.getGrade().getLetterGrade();
+			}
+		}
+		return pidFound;
+	}
 
 }
