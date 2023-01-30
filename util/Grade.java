@@ -7,6 +7,11 @@ import java.util.*;
 public class Grade {
     private int score;    //integer score
     private String letterGrade;  //String letterGrade
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
     public static String scoreToLetter(int score){   //converts score to Letter grade
         if(score > 100)
             System.out.println("Illegal");

@@ -99,24 +99,44 @@ public class Gradebook {
 		}
 		return Grade.scoreToLetter(maxScore);
 	}
-	public String findName(Integer studentID) {
+	public String findName(int studentID) {
 		String pidFound = "s";
 		for (Student s: listOfStudents) {
-			if (studentID.equals(s.getPid())) {
+			if (studentID == s.getPid()) {
 				pidFound = s.getFirstName() + " " + s.getLastName();
 			}
 		}
 		return pidFound;
 	}
 
-	public String findLetter(Integer sID) {
+	public String findLetter(int studentID) {
 		String pidFound = "s";
 		for (Student s: listOfStudents) {
-			if (sID.equals(s.getPid())) {
+			if (studentID == s.getPid()) {
 				pidFound = s.getGrade().getLetterGrade();
 			}
 		}
 		return pidFound;
 	}
+
+	public void change(int apantherID, int score){
+		Grade newGrade = new Grade(score);
+
+		for (Student s: listOfStudents){
+			if (apantherID == s.getPid()) {
+				s.setGrade(newGrade);
+			}
+		}
+	}
+
+	public String tabScores() {
+		for(Student s: listOfStudents){
+			System.out.printf("%-10.10s\t%-10.10s\t%d\t%d\n", s.getFirstName(),
+					s.getLastName(), s.getPid(), s.getGrade()).toString();
+		}
+
+	}
+
+
 
 }

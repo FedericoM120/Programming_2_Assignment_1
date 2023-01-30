@@ -19,8 +19,9 @@ public class Main {
         //if (given.matches("[a-zA-Z]+")) return true
     }
     private static boolean checkLastName(String given){
-        if (Character.isUpperCase(given.charAt(0)) && given.matches("[a-zA-Z]+")
-                && given.length() > 0) {
+        int dotCount = given.length() - given.replace(".", "").length();
+        if (Character.isUpperCase(given.charAt(0)) && given.matches("[a-zA-Z.]+")
+                && given.length() > 0 && dotCount <= 1) {
             return true;
         }
         return false;
@@ -74,11 +75,12 @@ public class Main {
                 continue;
             }
             if(!checkScore(tokens[3])){
-                System.out.println("Grade must be a non-negative integer that doesn't exceed 100");
+                System.out.println("Grade must be a non-negative integer that is greater than or equal to 0" +
+                        " or less than or equal to 100");
                 continue;
             }
             Student student = new Student(tokens[0],tokens[1],Integer.parseInt(tokens[2]),
-                    new Grade(Integer.parseInt(tokens[3]))); //why is parseint needed here?
+                    new Grade(Integer.parseInt(tokens[3])));
             gradebook.addStudent(student);
 
             System.out.println("Please enter the information of the next student using the same format." +
@@ -108,20 +110,18 @@ public class Main {
             }else if(command.equals("median letter")){
                 System.out.println(gradebook.getMedianLetter());
             }else if(command.equals("tab score")){
-
+                System.out.println(gradebook.tabScores());
             }else if(command.equals("tab letter")){
 
             }else if(command.startsWith("change")){
 
-            }else if(command.startsWith("name")){
+            }else if(command.startsWith("name")){     //prints "please enter a new command" twice
                 System.out.println("enter panther ID");
-                int pantherID = 0;
-                pantherID = keyboard.nextInt();
+                int pantherID = keyboard.nextInt();
                 System.out.println(gradebook.findName(pantherID));
-            }else if(command.startsWith("letter")){
+            }else if(command.startsWith("letter")){    //prints "please enter a new command" twice
                 System.out.println("enter panther ID");
-                int pantherID = 0;
-                pantherID = keyboard.nextInt();
+                int pantherID = keyboard.nextInt();
                 System.out.println(gradebook.findLetter(pantherID));
             }else{
                 //print an error message "Illegal command, try again"...
