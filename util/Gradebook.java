@@ -129,14 +129,15 @@ public class Gradebook {
 		}
 	}
 
-	public String tabScores() {
+	public void tabScores() {
 		for(Student s: listOfStudents){
-			System.out.printf("%-10.10s\t%-10.10s\t%d\t%d\n", s.getFirstName(),
-					s.getLastName(), s.getPid(), s.getGrade()).toString();
+			System.out.printf("%s\t%s\t%d\t%d\n", s.getFirstName(), s.getLastName(), s.getPid(), s.getGrade().getScore());
 		}
-
 	}
 
-
-
+	public void tabLetter() {
+		for(Student s: listOfStudents){
+			System.out.printf("%s\t%s\t%d\t%s\n", s.getFirstName(), s.getLastName(), s.getPid(), s.getGrade().getLetterGrade());
+		}
+	}
 }

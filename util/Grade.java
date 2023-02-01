@@ -14,7 +14,7 @@ public class Grade {
 
     public static String scoreToLetter(int score){   //converts score to Letter grade
         if(score > 100)
-            System.out.println("Illegal");
+            System.out.println("Score must not be greater than 100");
         if(score >= 90){
             return "A";
         }
@@ -54,5 +54,9 @@ public class Grade {
     public String getLetterGrade() {  //gets the letter grade from the constructor
 
         return letterGrade;
+    }
+
+    public String toString() {
+        return  Integer.toString(score);
     }
 }

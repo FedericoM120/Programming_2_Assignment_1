@@ -110,11 +110,23 @@ public class Main {
             }else if(command.equals("median letter")){
                 System.out.println(gradebook.getMedianLetter());
             }else if(command.equals("tab score")){
-                System.out.println(gradebook.tabScores());
+                gradebook.tabScores();
             }else if(command.equals("tab letter")){
-
+                gradebook.tabLetter();
             }else if(command.startsWith("change")){
-
+                System.out.println("Enter Panther ID and new grade");
+                String input = keyboard.nextLine();
+                String[] values = input.split(" ");
+                int pantherID;
+                int newGrade;
+                if (Integer.parseInt(values[1]) > 100 || Integer.parseInt(values[1]) < 0) {
+                    System.out.println("Please enter a grade less than or equal to 100 and greater than or " +
+                            "equal to 0");
+                } else {
+                     pantherID = Integer.parseInt(values[0]);
+                     newGrade = Integer.parseInt(values[1]);
+                    gradebook.change(pantherID, newGrade);
+                }
             }else if(command.startsWith("name")){     //prints "please enter a new command" twice
                 System.out.println("enter panther ID");
                 int pantherID = keyboard.nextInt();
@@ -124,7 +136,7 @@ public class Main {
                 int pantherID = keyboard.nextInt();
                 System.out.println(gradebook.findLetter(pantherID));
             }else{
-                //print an error message "Illegal command, try again"...
+                System.out.println("\"Illegal command, try again\"...");
             }
         }
     }
