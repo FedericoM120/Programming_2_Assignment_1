@@ -3,16 +3,19 @@
 package util;
 
 import java.util.*;
-
+//class grade stores a students score and letter grade
 public class Grade {
-    private int score;    //integer score
-    private String letterGrade;  //String letterGrade
-
+    //private integer variable to store the score
+    private int score;
+    //private String variable to store the letter grade
+    private String letterGrade;
+    //method that allows to set the score value
     public void setScore(int score) {
         this.score = score;
     }
-
-    public static String scoreToLetter(int score){   //converts score to Letter grade
+//static method which takes an integer score input and returns the matching letter grade
+    public static String scoreToLetter(int score){
+        //uses if statements to determine the letter grade based on the score
         if(score > 100)
             System.out.println("Score must not be greater than 100");
         if(score >= 90){
@@ -41,21 +44,23 @@ public class Grade {
         }
             return "F";
     }
-
+    //grade constructor take integer score as input and tset the score value to the score field
     public Grade(int score) {  //Grade constructor which passes the score parameter to score field and assigns
                                 //letter grade a letter by using the scoreToLetter method
         this.score = score;
         this.letterGrade = scoreToLetter(score);
     }
+    //returns the score
     public int getScore() {  //gets the score from the constructor
 
         return score;
     }
+    //returns the letter grade
     public String getLetterGrade() {  //gets the letter grade from the constructor
 
         return letterGrade;
     }
-
+    //returns the score as a string
     public String toString() {
         return  Integer.toString(score);
     }
